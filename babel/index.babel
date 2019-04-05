@@ -1,0 +1,632 @@
+// Made by Talentovana_vestica (Twitter: @yagoestevez.com)
+
+
+/***********************
+  Menu Component
+ ***********************/
+
+const Menu = props => {
+  return (
+    <div className={`menu-container ${props.showMenu}`}>
+      <div className="overlay" />
+      <div className="menu-items">
+        <ul>
+          <li>
+            <a href="#welcome-section" onClick={props.toggleMenu}>
+              POCETAK
+            </a>
+          </li>
+          <li>
+            <a href="#about" onClick={props.toggleMenu}>
+              O MENI
+            </a>
+          </li>
+          <li>
+            <a href="#projects" onClick={props.toggleMenu}>
+              PORTFOLIO
+            </a>
+          </li>
+          <li>
+            <a href="#contact" onClick={props.toggleMenu}>
+              KONTAKT
+            </a>
+          </li>
+        </ul>
+        <SocialLinks />
+      </div>
+    </div>
+  );
+};
+
+
+/***********************
+  Nav Component
+ ***********************/
+
+const Nav = props => {
+  return (
+    <React.Fragment>
+      <nav id="navbar">
+        <div className="nav-wrapper">
+          <p className="brand">
+            
+            <strong>Talentovana_vestica </strong>
+          </p>
+          <a
+            onClick={props.toggleMenu}
+            className={props.showMenu === 'active' ? 'menu-button active' : 'menu-button'}
+          >
+            <span />
+          </a>
+        </div>
+      </nav>
+    </React.Fragment>
+  );
+};
+
+
+
+/***********************
+  Header Component
+ ***********************/
+
+const Header = props => {
+  return (
+    <header id="welcome-section">
+      <div className="forest" />
+      <div className="silhouette" />
+      <div className="moon" />
+      <div className="container">
+        <h1>
+          <span className="line">I do</span>
+          <span className="line">graphic design</span>
+          <span className="line">
+            <span className="color">&</span> code.
+          </span>
+        </h1>
+        <div className="buttons">
+          <a href="  https://brankicinekreativneideje.wordpress.com/ ">moj blog</a>
+          <a href="  https://brankicinekreativneideje.wordpress.com/saradnja/  " className="cta">
+            Saradnja
+          </a>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+
+/***********************
+  About Component
+ ***********************/
+
+const About = props => {
+  return (
+    <section id="about">
+      <div className="wrapper">
+        <article>
+          <div className="title">
+            <h3> o meni </h3>
+            <p className="separator" />
+          </div>
+          <div className="desc full">
+            <h4 className="subtitle">Moje ime je Brankica</h4>
+            <p>
+              I am a web developer and project menager.
+            </p>
+            <p>
+        
+            </p>
+          </div>
+          <div className="title">
+            <h3> o mom obrazvanju...</h3>
+            <p className="separator" />
+          </div>
+          <div className="desc">
+            <h4 className="subtitle">I'm a programmer.</h4>
+            <p>
+              Front-end programer imam za cilj da potpuno kreiram, prilagodim i isprogramiram vizuelni identitet sajta, pripremim slike i tekstove, složim ih na odgovarajući način, prilagodim potrebama korisnika i tržišta, i kreiram sajt koji ostavlja potpun efekat kod krajnjeg korisnika. U toku kursa izučavaju se najpopularniji jezici, tehnologije i njihove primene: HTML, CSS, XML, Java script, Php,Payton,wordpress . Na kraju kursa trebam da ima kreiran kompletan sajt sa najsavremenijim zahtevima i da nauči postupak postavljanja tog sajta na internet. Posebna pažnja se posvećuje alatima, trikovima i veštinama kako da se kreirani sajt najbolje moguće tretira od strane web pretraživača, i kako da se u postupku pretrage korisniku pokaže na prvoj stranici Google-a.
+            </p>
+            <p>
+            
+            </p>
+          </div>
+          <div className="desc">
+            <h4 className="subtitle">Also a designer.</h4>
+            <p>
+       Radujem se radujući sa mnogim Adobe proizvodima. Photoshop, Illustrator, InDesign, Lightroom ili Xd su neka vrsta industrijskih standarda i volim da radim s njima. Nisam ograničen na njih, iako: Gimp,codepen,canva i itd su takođe vrlo validne aplikacije sa kojima radim.
+Korisnički interfejsi, brošure, knjige, brendiranje logo vizit karte i itd ... Vi to nazivate! Kao što sam pomenula, stvaranje lepih stvari.
+            </p>
+            <p>
+            
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+  );
+};
+
+
+/***********************
+  Project Component
+ ***********************/
+
+const Project = props => {
+  const tech = {
+    sass: 'fab fa-sass',
+    css: 'fab fa-css3-alt',
+    js: 'fab fa-js-square',
+    react: 'fab fa-react',
+    vue: 'fab fa-vuejs',
+    d3: 'far fa-chart-bar',
+    node: 'fab fa-node'
+  };
+
+  const link = props.link || 'http://';
+  const repo = props.repo || 'http://';
+
+  return (
+    <div className="project">
+      <a className="project-link" href={link} target="_blank" rel="noopener noreferrer">
+        <img className="project-image" src={props.img} alt={'Screenshot of ' + props.title} />
+      </a>
+      <div className="project-details">
+        <div className="project-tile">
+          <p className="icons">
+            {props.tech.split(' ').map(t => (
+              <i className={tech[t]} key={t} />
+            ))}
+          </p>
+          {props.title}{' '}
+        </div>
+        {props.children}
+        <div className="buttons">
+          <a href={repo} target="_blank" rel="noopener noreferrer">
+            View source <i className="fas fa-external-link-alt" />
+          </a>
+          <a href={link} target="_blank" rel="noopener noreferrer">
+            Try it Live <i className="fas fa-external-link-alt" />
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+
+
+/***********************
+  Projects Component
+ ***********************/
+
+const Projects = props => {
+  return (
+    <section id="projects">
+      <div className="projects-container">
+        <div className="heading">
+          <h3 className="title">My Works</h3>
+          <p className="separator" />
+          <p className="subtitle">
+            <u></u> 
+            <a href=" https://s.codepen.io/BrankicAmilovanovic/debug/ePKawX/RBAOJNpwbmvr " target="_blank" rel="noopener noreferrer">
+              
+            </a>
+            
+          </p>
+        </div>
+        <div className="projects-wrapper">
+          <Project
+            title=" STIKERI ZA ZIDOVE"
+            img={'https://brankicinekreativneideje.files.wordpress.com/2018/10/img_20181014_010627_922232604477.jpg '}
+            tech="js css react node"
+            link=" https://s.codepen.io/BrankicAmilovanovic/debug/ePKawX/RBAOJNpwbmvr "
+            repo="  https://s.codepen.io/BrankicAmilovanovic/debug/ePKawX/RBAOJNpwbmvr "
+          >
+            <small>
+              STIKERI ZA ZIDOVE
+            </small>
+            <p>
+              Veliki izbor dekoracije za vaš dom. Niske cene svaki dan. Naruči u webshopu! Webshop - Svuda u Srbiji. 
+            </p>
+          </Project>
+          <Project
+            title=" MY WEB SITE"
+            img={'  https://brankicinekreativneideje.files.wordpress.com/2018/10/fb_img_1539609333705437795085.jpg '}
+            tech="js node css"
+            link="https://brankicamilovanovic.github.io/webstudiobranci/ "
+            repo="https://brankicamilovanovic.github.io/webstudiobranci/ "
+          >
+            <small>
+              WEB SITE
+            </small>
+            <p>
+              web dizajn agencija koja ima u ponudi kvalitetnu izradu sajta. Usluge web i grafičkog dizajna, programiranja i internet marketinga.
+              
+            </p>
+          </Project>
+          <Project
+            title="DRAWING ART"
+            img={' https://brankicinekreativneideje.files.wordpress.com/2018/10/screenshot_20181020-1914541263226385.png?w=1000 '}
+            tech="js node css"
+            link=" https://s.codepen.io/BrankicAmilovanovic/debug/EwrJdE/YvMgOnmjgEYM "
+            repo="https://s.codepen.io/BrankicAmilovanovic/debug/EwrJdE/YvMgOnmjgEYM  "
+          >
+            <small>  </small>
+            <p>
+              
+            </p>
+          </Project>
+          <Project
+            title="CV RESUME"
+            img={' https://brankicinekreativneideje.files.wordpress.com/2018/10/screenshot_20181020-174943_1990745395.png '}
+            tech="js node css"
+            link="  https://s.codepen.io/BrankicAmilovanovic/debug/NOzayw/mWkoNxZeBdPA "
+            repo="   https://s.codepen.io/BrankicAmilovanovic/debug/NOzayw/mWkoNxZeBdPA "
+          >
+            <small>CV je kratak i precizno napisan tekst kojim se opisuju lična dostignuća na obrazovnom planu, prethodno radno iskustvo, specifična znanja te vještine i osobine koje su važne prilikom prijave za određeno radno mjesto ili ... </small>
+            <p></p>
+          </Project>
+          <Project
+            title="MY GAMES MAC MAC SLAGALICA "
+            img={'  https://brankicinekreativneideje.files.wordpress.com/2017/08/wp-image-2100973441.png '}
+            tech="js node css"
+            link="  https://s.codepen.io/BrankicAmilovanovic/debug/GvProj/bYAdyevjvOBk "
+            repo="  https://s.codepen.io/BrankicAmilovanovic/debug/GvProj/bYAdyevjvOBk "
+          >
+            <small> PROGRAMRANJE IGARA</small>
+            <p>
+           
+            </p>
+          </Project>
+          <Project
+            title=" my games tic tac"
+            img={'https://brankicinekreativneideje.files.wordpress.com/2018/10/screenshot_20181022-1428351205607978.png?w=1000  '}
+            tech="js node css"
+            link="  https://s.codepen.io/BrankicAmilovanovic/debug/PyByNw/PNAvYGxVnWGr "
+            repo="   https://s.codepen.io/BrankicAmilovanovic/debug/PyByNw/PNAvYGxVnWGr ">
+          
+            <small></small>
+            <p>
+            
+            </p>
+          </Project>
+          <Project
+            title="SCTIKERS SOVA ."
+            img={' https://brankicinekreativneideje.files.wordpress.com/2018/10/screenshot_20181024-182757462731442.png?w=1000 '}
+            tech="js vue node css"
+            link="  https://s.codepen.io/BrankicAmilovanovic/debug/VEGORJ/xnrabNJxepGA  "
+            repo="  https://s.codepen.io/BrankicAmilovanovic/debug/VEGORJ/xnrabNJxepGA "
+          >
+            <small>Built using Node, Express, VueJS + Vue Router and CSS + Bootstrap.</small>
+            <p>
+              A service which lets the users save their daily exercise (or anything) into a log for
+              them to check it later.
+            </p>
+          </Project>
+          <Project
+            title=" SOVA MUG - SOLJA"
+            img={'     https://brankicinekreativneideje.files.wordpress.com/2018/10/screenshot_20181024-1834591673444136.png?w=1000  '}
+            tech="js d3 css"
+            link="     https://s.codepen.io/BrankicAmilovanovic/debug/KGGKqR/PBrNWNpmJLdA "
+            repo="    https://s.codepen.io/BrankicAmilovanovic/debug/KGGKqR/PBrNWNpmJLdA    "
+          >
+            <small>.</small><small> </small>
+          </Project>
+          <Project
+            title="ANIMATION VREMENSKA PROGNOZA"
+            img={'  https://brankicinekreativneideje.files.wordpress.com/2018/10/screenshot_20181022-130509547121026.png?w=1000 '}
+            tech="js d3 css"
+            link=" https://s.codepen.io/BrankicAmilovanovic/debug/aRjKaX/RBMOJNpBOqqk "
+            repo=" https://s.codepen.io/BrankicAmilovanovic/debug/aRjKaX/RBMOJNpBOqqk "
+          >
+            <small>Built using CSS, JS and D3.js.</small>
+            <p>
+              A treemap diagram representing groups of pledges and sales from a particular category.
+            </p>
+          </Project>
+          <Project
+            title="Portfoliodrawing art"
+            img={'https://brankicinekreativneideje.files.wordpress.com/2018/10/screenshot_20181025-0009561045726730.png?w=1000'}
+            tech="js d3 css"
+            link="https://s.codepen.io/BrankicAmilovanovic/debug/pdNmmv/NjMYzqVEGzmr "
+            repo=" https://s.codepen.io/BrankicAmilovanovic/debug/pdNmmv/NjMYzqVEGzmr"
+          >
+            <small>Built using CSS, JS and D3.js.</small>
+            <p>A choropleth map representing the educational attainment by county in the U.S.</p>
+          </Project>
+          <Project
+            title=" Stikeri za spiljunku za vrata"
+            img={'https://brankicinekreativneideje.files.wordpress.com/2018/10/img_20181024_174542_47969226755.jpg '}
+            tech="js vue css"
+            link="https://s.codepen.io/BrankicAmilovanovic/debug/rqEXdj/dGrXWdRzjayM "
+            repo="https://s.codepen.io/BrankicAmilovanovic/debug/rqEXdj/dGrXWdRzjayM "
+          >
+            <small>Built using VueJS, Axios and CSS + Bootstrap.</small>
+            <p>A random quoting app which retrieves pictures and quotes from two different APIs.</p>
+          </Project>
+          <Project
+            title=" unikatne solje by taletovan vestica"
+            img={' https://brankicinekreativneideje.files.wordpress.com/2018/10/img_20181025_171725_9421428758271.jpg '}
+            tech="js react css"
+            link=" https://s.codepen.io/BrankicAmilovanovic/debug/wYLLyj/bZMQWNvOGmPA "
+            repo="  https://s.codepen.io/BrankicAmilovanovic/debug/wYLLyj/bZMQWNvOGmPA "
+          >
+            <small>Built using React and CSS.</small>
+            <p>A project on which I built a virtual calculator with its usual features.</p>
+          </Project>
+          <Project
+            title=" Designer vizit karte ."
+            img={'https://brankicinekreativneideje.files.wordpress.com/2018/10/screenshot_20181107-1839441826642426.png?w=1000  '}
+            tech="js react css"
+            link="  https://s.codepen.io/BrankicAmilovanovic/debug/gBRzWQ/LQMExKmzRYvk# "
+            repo="  https://s.codepen.io/BrankicAmilovanovic/debug/gBRzWQ/LQMExKmzRYvk# "
+          >
+            <small>Built using React, CSS and lots of SVG.</small>
+            <p>A cute and animated Pomodoro clock to help the users improve their productivity.</p>
+          </Project>
+          <Project
+            title="LOGO "
+            img={'https://brankicinekreativneideje.files.wordpress.com/2018/10/screenshot_20181107-1852292077355268.png?w=1000  '}
+            tech="js react css"
+            link="https://s.codepen.io/BrankicAmilovanovic/debug/jewxQW/GnrnbNmvKgJr  "
+            repo="  https://s.codepen.io/BrankicAmilovanovic/debug/jewxQW/GnrnbNmvKgJr "
+          >
+            <small>Built using React, CSS and SVG.</small>
+            <p>
+              A TicTacToe game with a basic AI algorithm made for the legacy front-end projects on
+              FreeCodeCamp.
+            </p>
+          </Project>
+          <Project
+            title="calculator memory"
+            img={'https://brankicinekreativneideje.files.wordpress.com/2018/10/screenshot_20181107-1906061866098829.png?w=1000  '}
+            tech="js vue sass"
+            link="  https://s.codepen.io/BrankicAmilovanovic/debug/vWBLKN/bZrQWNvRBqmk "
+          >
+            {/* repo="https://s.codepen.io/BrankicAmilovanovic/debug/vWBLKN/bZrQWNvRBqmk  > */}
+            <small>Built using VueJS, Axios and Scss.</small>
+            <p>
+              Simple Twitch clone using the new Twitch Helix API and made for the legacy front-end
+              projects on FreeCodeCamp.
+            </p>
+          </Project>
+          <Project
+            title="Weather App."
+            img={'https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Components/Projects/Images/WeatherApp.jpg'}
+            tech="js vue css"
+            link=" https://s.codepen.io/BrankicAmilovanovic/debug/WYrpqZ/VJMxxVdNyYJM "
+          >
+            {/* repo=" https://s.codepen.io/BrankicAmilovanovic/debug/WYrpqZ/VJMxxVdNyYJM "> */}
+            <small>Built using VueJS, Axios and CSS.</small>
+            <p>App that present the users with the current local weather for their location.</p>
+          </Project>
+          <Project
+            title=""
+            img={''}
+            tech="js sass"
+            link=""
+            repo=""
+          >
+            <small></small>
+            <p>
+             
+            </p>
+          </Project>
+          <Project
+            title=""
+            img={''}
+            tech="js sass"
+            link=""
+            repo=""
+          >
+            <small></small>
+            <p></p>
+          </Project>
+          <Project
+            title=""
+            img={''}
+            tech="js sass"
+            link=""
+            repo=""
+          >
+            <small></small>
+            <p></p>
+          </Project>
+          <Project
+            title=""
+            img={''}
+            tech="js react css"
+            link=""
+            repo=""
+          >
+            <small></small>
+            <p>
+              
+            </p>
+          </Project>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+
+
+/***********************
+  Contact Component
+ ***********************/
+
+const Contact = props => {
+  return (
+    <section id="contact">
+      <div className="container">
+        <div className="heading-wrapper">
+          <div className="heading">
+            <p className="title">
+              Nadji me? <br />
+              
+            </p>
+            <p className="separator" />
+            <p className="subtitle">
+              Please, use the form below or send an email to {''}
+              <span className="mail">
+                web
+                <i className="fas fa-at at" />
+                talentovana vestica
+                <i className="fas fa-circle dot" />
+                com
+              </span>
+              :
+            </p>
+          </div>
+          <SocialLinks />
+        </div>
+        <form id="contact-form" action="#">
+          <input placeholder="Name" name="name" type="text" required />
+          <input placeholder="Email" name="email" type="email" required />
+          <textarea placeholder="Message" type="text" name="message" />
+          <input className="button" id="submit" value="Submit" type="submit" />
+        </form>
+      </div>
+    </section>
+  );
+};
+
+
+
+/***********************
+  Footer Component
+ ***********************/
+
+const Footer = props => {
+  return (
+    <footer>
+      <div className="wrapper">
+        <h3>HVALA STO STE ME POSETILI </h3>
+        <p>© {new Date().getFullYear()} Talentovana vestica.</p>
+        <SocialLinks />
+      </div>
+    </footer>
+  );
+};
+
+
+
+
+/***********************
+  Social Links Component
+ ***********************/
+
+const SocialLinks = props => {
+  return (
+    <div className="social">
+      <a
+        href="https://twitter.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Link to author's Twitter profile"
+      >
+        {' '}
+        <i className="fab fa-twitter" />
+      </a>
+      <a
+        id="profile-link"
+        href="https://github.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Link to author's GitHub Profile"
+      >
+        {' '}
+        <i className="fab fa-github" />
+      </a>
+      <a
+        href="https://codepen.io/"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Link to author's Codepen Profile"
+      >
+        {' '}
+        <i className="fab fa-codepen" />
+      </a>
+    </div>
+  );
+};
+
+
+
+/***********************
+  Main Component
+ ***********************/
+
+class App extends React.Component {
+  state = {
+    menuState: false
+  };
+
+  toggleMenu = () => {
+    this.setState(state => ({
+      menuState: !state.menuState
+        ? 'active'
+        : state.menuState === 'deactive'
+          ? 'active'
+          : 'deactive'
+    }));
+  };
+
+  render() {
+    return (
+      <React.Fragment>
+        <Menu toggleMenu={this.toggleMenu} showMenu={this.state.menuState} />
+        <Nav toggleMenu={this.toggleMenu} showMenu={this.state.menuState} />
+        <Header />
+        <About />
+        <Projects />
+        <Contact />
+        <Footer />
+      </React.Fragment>
+    );
+  }
+
+  componentDidMount() {
+    const navbar = document.querySelector('#navbar');
+    const header = document.querySelector('#welcome-section');
+    const forest = document.querySelector('.forest');
+    const silhouette = document.querySelector('.silhouette');
+    let forestInitPos = -300;
+
+    window.onscroll = () => {
+      let scrollPos = document.documentElement.scrollTop || document.body.scrollTop;
+
+      if (scrollPos <= window.innerHeight) {
+        silhouette.style.bottom = `${parseInt(scrollPos / 6)}px`;
+        forest.style.bottom = `${parseInt(forestInitPos + scrollPos / 6)}px`;
+      }
+
+      if (scrollPos - 100 <= window.innerHeight)
+        header.style.visibility = header.style.visibility === 'hidden' && 'visible';
+      else header.style.visibility = 'hidden';
+
+      if (scrollPos + 100 >= window.innerHeight) navbar.classList.add('bg-active');
+      else navbar.classList.remove('bg-active');
+    };
+
+    (function navSmoothScrolling() {
+      const internalLinks = document.querySelectorAll('a[href^="#"]');
+      for (let i in internalLinks) {
+        if (internalLinks.hasOwnProperty(i)) {
+          internalLinks[i].addEventListener('click', e => {
+            e.preventDefault();
+            document.querySelector(internalLinks[i].hash).scrollIntoView({
+              block: 'start',
+              behavior: 'smooth'
+            });
+          });
+        }
+      }
+    })();
+  }
+}
+
+
+ReactDOM.render(<App />, document.getElementById('app'));
